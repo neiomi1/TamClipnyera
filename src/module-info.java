@@ -12,8 +12,11 @@ module clip
     requires javafx.graphics;
 
     requires javafx.controls;
+
     requires java.datatransfer;
+
     requires java.desktop;
+
     requires javafx.base;
 
     exports code;
