@@ -26,7 +26,7 @@ public class ClipContainerToCSV
 
             try
             {
-                Files.write(Paths.get(pathstub + filename + ".csv"), ("\n" + sw.toString()).getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get(pathstub + filename + ".csv"), (sw.toString()).getBytes(), StandardOpenOption.APPEND);
             }
             catch (IOException e)
             {

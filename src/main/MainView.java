@@ -16,8 +16,6 @@ public class MainView extends BorderPane
 
     private MainPresenter mainPresenter;
 
-    private ObservableList<String> allCharacters;
-
     private HBox defaultTopArea;
 
     public void setMainPresenter(MainPresenter mainPresenter)
@@ -27,15 +25,16 @@ public class MainView extends BorderPane
 
     public MainView()
     {
-        initView();
     }
 
-    public void initView()
+    public void initView(ObservableList<String> comboList, String lastUser)
     {
         defaultTopArea = new HBox(5);
-        characters = new ComboBox<String>();
+        characters = new ComboBox<String>(comboList);
+        characters.valueProperty().addListener((p, o, n) -> mainPresenter.switchUser(n));
+        characters.getSelectionModel().select(lastUser);
         settings = new Button("Settings");
-        
+
         settings.setOnAction(e -> mainPresenter.showSettingsView());
         defaultTopArea.getChildren().addAll(characters, settings);
         setTop(defaultTopArea);
@@ -53,12 +52,9 @@ public class MainView extends BorderPane
         setTop(content);
     }
 
-    public void updateComboBox(ObservableList<String> updatedList, String lastUser)
+    public void updateSelection(String user)
     {
-        defaultTopArea.getChildren().remove(0);
-        characters = new ComboBox<String>(updatedList);
-        characters.valueProperty().addListener((p, o, n) -> mainPresenter.switchUser(n));
-        characters.getSelectionModel().select(lastUser);
-        defaultTopArea.getChildren().add(0, characters);
+        setTop(defaultTopArea);
+        characters.getSelectionModel().select(user);
     }
 }

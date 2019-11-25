@@ -30,15 +30,12 @@ public class AddPresenter
     {
         this.addView = addView;
         ObservableList<String> test = mainPresenter.getAllFiles();
-        test.add(mainPresenter.getUser());
+        test.add("Favourites");
         this.addView.init(test);
     }
 
     public Pane getView()
     {
-        ObservableList<String> test = mainPresenter.getAllFiles();
-        test.add("Favourites");
-        this.addView.updateComboBox(test);
         return this.addView;
     }
 
@@ -49,6 +46,7 @@ public class AddPresenter
 
     public void save(String name, String description, String[] tags, String filename)
     {
+        ClipContainer container = new ClipContainer(clipContainerModel.getNextID(filename), name, description, tags);
         String[] temp = new String[tags.length + 3];
         temp[0] = name;
         temp[1] = description;
@@ -59,6 +57,7 @@ public class AddPresenter
             temp[i + 3] = s;
             i++;
         }
+        clipContainerModel.putContainerInMap(container, filename);
         ClipContainerToCSV.writeToCSV(temp, mainPresenter.getUser());
 
     }
@@ -72,6 +71,7 @@ public class AddPresenter
         }
         else
         {
+            clipContainerModel.putContainerInMap(container, filename);
             ClipContainerToCSV.writeToCSV(container.toStringArray(), filename);
         }
     }

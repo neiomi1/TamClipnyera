@@ -78,10 +78,4 @@ public class AddView extends GridPane
         this.addPresenter = addPresenter;
     }
 
-    public void updateComboBox(ObservableList<String> list)
-    {
-        possibleFiles = new ComboBox<String>(list);
-        possibleFiles.getSelectionModel().selectLast();
-        add(possibleFiles, 0, 3);
-    }
 }

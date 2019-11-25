@@ -50,6 +50,8 @@ public class ClipContainerMap
 
     public void putInMap(ClipContainer container)
     {
+        System.out.println("*****************PUTTING*************");
+        System.out.println(container.getName() + "  in " + csvName);
         counter++;
         this.storedMap.put(counter, container);
     }

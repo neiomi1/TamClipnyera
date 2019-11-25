@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -25,17 +24,16 @@ public class SettingsModel
 
     private String startingUser;
 
-    private List<String> allUsers;
+    private ObservableList<String> allUsers;
 
     private String mode;
 
-    private List<String> allFiles;
+    private ObservableList<String> allFiles;
 
     public SettingsModel()
     {
-        this.allUsers = new ArrayList<>();
-        this.allFiles = new ArrayList<>();
-
+        this.allUsers = FXCollections.observableArrayList();
+        this.allFiles = FXCollections.observableArrayList();
         try
         {
             Properties prop = new Properties();
@@ -101,14 +99,9 @@ public class SettingsModel
         return startingUser;
     }
 
-    public List<String> getAllUsers()
-    {
-        return allUsers;
-    }
-
     public ObservableList<String> getAllUsersProperty()
     {
-        return FXCollections.observableArrayList(allUsers);
+        return this.allUsers;
     }
 
     public String getMode()
@@ -118,24 +111,14 @@ public class SettingsModel
 
     public void updateModel(List<String> allUsers, String startingUser, String mode)
     {
-        this.allUsers = allUsers;
+        // this.allUsers = allUsers;
         this.mode = mode;
         this.startingUser = startingUser;
     }
 
     public ObservableList<String> getAllFilesProperty()
     {
-        System.out.println("/////////////////All files//////////////");
-        for (String s : allFiles)
-        {
-            System.out.println(s);
-        }
-        return FXCollections.observableArrayList(allFiles);
-    }
-
-    public List<String> getAllFiles()
-    {
-        return allFiles;
+        return this.allFiles;
     }
 
 }
