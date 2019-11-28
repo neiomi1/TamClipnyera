@@ -59,13 +59,16 @@ public class OverviewView extends VBox
         ListView<ClipContainer> tempListView = new ListView<ClipContainer>();
         tempListView.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) ->
         {
-            if (presenter.checkCopyMode())
+            if (newValue != null)
             {
-                presenter.copyToClipboard(newValue);
-            }
-            else
-            {
-                presenter.ClipContainerSelected(newValue, "Favourites");
+                if (presenter.checkCopyMode())
+                {
+                    presenter.copyToClipboard(newValue);
+                }
+                else
+                {
+                    presenter.ClipContainerSelected(newValue, "Favourites");
+                }
             }
         });
         BorderPane.setMargin(tempListView, new Insets(10, 10, 10, 10));

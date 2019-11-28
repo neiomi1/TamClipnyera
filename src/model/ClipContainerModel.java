@@ -40,6 +40,15 @@ public class ClipContainerModel
 
     public List<ClipContainerMap> searchClipContainers(String[] keywords)
     {
+        System.out.println("-------------------------ALL VALUES----------------------");
+        for (ClipContainerMap m : storedMaps.values())
+        {
+            for (ClipContainer con : m.getStoredMap().values())
+            {
+                System.out.println(con.getName() + " in " + m.getCsvName());
+            }
+        }
+        System.out.println("-----------------------------------------------------------");
         List<ClipContainerMap> matches = new ArrayList<>();
         if (keywords == null || keywords.length == 0)
         {
@@ -97,8 +106,9 @@ public class ClipContainerModel
         }
         return 0;
     }
-    
-    public void putContainerInMap(ClipContainer container, String map) {
+
+    public void putContainerInMap(ClipContainer container, String map)
+    {
         storedMaps.get(map).putInMap(container);
     }
 }

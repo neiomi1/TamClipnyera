@@ -44,8 +44,8 @@ public class MainPresenter
 
     public MainView getMainView()
     {
-        lastUser = settingsPresenter.getStartingUser();
-        mainView.updateComboBox(settingsPresenter.getAllUsers(), lastUser);
+        // lastUser = settingsPresenter.getStartingUser();
+        // mainView.initView(settingsPresenter.getAllUsers(), lastUser);
         return mainView;
     }
 
@@ -59,13 +59,21 @@ public class MainPresenter
         this.detailPresenter = detailPresenter;
     }
 
-    public void setAddPresenter(AddPresenter addPresenter) {
+    public void setAddPresenter(AddPresenter addPresenter)
+    {
         this.addPresenter = addPresenter;
     }
+
     public void showOverviewView()
     {
+        if (lastUser == null)
+        {
+            lastUser = settingsPresenter.getStartingUser();
+            mainView.initView(settingsPresenter.getAllUsers(), lastUser);
+        }
         lastView = "overview";
         overviewPresenter.search();
+        System.out.println(lastUser);
         mainView.setContent(overviewPresenter.getView());
     }
 
@@ -74,6 +82,8 @@ public class MainPresenter
         lastView = "detail";
         this.container = container;
         currentKey = key;
+        // overviewPresenter.ClipContainerSelected(this.container,
+        // this.currentKey);
         detailPresenter.setClipContainer(container);
         mainView.setContent(detailPresenter.getView());
     }
@@ -91,8 +101,7 @@ public class MainPresenter
 
     public void showLastView()
     {
-        mainView.initView();
-        mainView.updateComboBox(settingsPresenter.getAllUsers(), lastUser);
+        mainView.updateSelection(lastUser);
         if (lastView.contentEquals("detail") && !getMode().contentEquals("copy"))
         {
             showDetailView(this.container, currentKey);
@@ -114,6 +123,7 @@ public class MainPresenter
         ClipContainerModel m = new ClipContainerModel(userName);
         overviewPresenter.setClipContainerModel(m);
         detailPresenter.setClipContainerModel(m);
+        addPresenter.setClipContainerModel(m);
         showOverviewView();
     }
 

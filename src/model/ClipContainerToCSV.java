@@ -1,8 +1,11 @@
 package model;
 
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -21,12 +24,14 @@ public class ClipContainerToCSV
         CSVWriter writer = new CSVWriter(sw);
         try
         {
-            FileWriter fileWriter = new FileWriter(pathstub + "test.csv", true);
+            OutputStreamWriter fileWriter = new OutputStreamWriter(new FileOutputStream(pathstub + "test.csv", true), StandardCharsets.UTF_8);
+            // FileWriter fileWriter = new FileWriter(pathstub + "test.csv",
+            // true);
             writer.writeNext(data);
 
             try
             {
-                Files.write(Paths.get(pathstub + filename + ".csv"), ("\n" + sw.toString()).getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get(pathstub + filename + ".csv"), (sw.toString()).getBytes(), StandardOpenOption.APPEND);
             }
             catch (IOException e)
             {
