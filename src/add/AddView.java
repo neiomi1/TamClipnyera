@@ -57,7 +57,11 @@ public class AddView extends GridPane
         saveAll = new Button("save All");
         saveAll.setOnAction(e -> addPresenter.saveAll(nameInput.getText(), descriptionInput.getText(), tagsInput.getText().split(","), possibleFiles.getSelectionModel().getSelectedItem()));
         back = new Button("back");
-        back.setOnAction(e -> addPresenter.back());
+        back.setOnAction(e ->
+        {
+            addPresenter.back();
+            clearEntries();
+        });
 
         add(intro, 0, 0);
         add(name, 0, 1);
@@ -78,4 +82,10 @@ public class AddView extends GridPane
         this.addPresenter = addPresenter;
     }
 
+    public void clearEntries()
+    {
+        nameInput.clear();
+        descriptionInput.clear();
+        tagsInput.clear();
+    }
 }

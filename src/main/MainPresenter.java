@@ -44,8 +44,8 @@ public class MainPresenter
 
     public MainView getMainView()
     {
-        lastUser = settingsPresenter.getStartingUser();
-        mainView.initView(settingsPresenter.getAllUsers(), lastUser);
+        // lastUser = settingsPresenter.getStartingUser();
+        // mainView.initView(settingsPresenter.getAllUsers(), lastUser);
         return mainView;
     }
 
@@ -66,8 +66,14 @@ public class MainPresenter
 
     public void showOverviewView()
     {
+        if (lastUser == null)
+        {
+            lastUser = settingsPresenter.getStartingUser();
+            mainView.initView(settingsPresenter.getAllUsers(), lastUser);
+        }
         lastView = "overview";
         overviewPresenter.search();
+        System.out.println(lastUser);
         mainView.setContent(overviewPresenter.getView());
     }
 

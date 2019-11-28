@@ -1,7 +1,10 @@
 package model;
 
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +23,7 @@ public class ClipContainersFromCSV
         try
         {
             System.out.println(pathstub + charactername + ".csv");
-            CSVReader reader = new CSVReader(new FileReader(pathstub + charactername + ".csv"));
+            CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(pathstub + charactername + ".csv"), StandardCharsets.UTF_8));
             return (reader.readNext());
         }
         catch (Exception e)
