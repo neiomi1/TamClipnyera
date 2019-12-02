@@ -64,22 +64,42 @@ public class MainView extends Pane
 
     public void initView(ObservableList<String> comboList, String lastUser)
     {
+        defaultTopArea.setMinHeight(54);
+
+        // contentArea.setLayoutY(topHeight.get() / 2);
+        // contentArea.setLayoutX(((double) newVal - contentArea.getWidth()) /
+        // 2);
 
         topWidth.bind(parentWidth);
         topHeight.bind(parentHeight.divide(8));
 
         topHeight.addListener((prop, oldVal, newVal) ->
         {
+            System.out.println("-----------------------------------");
+            System.out.println("topHeight change:");
+            System.out.println(oldVal + " " + newVal);
             contentArea.setLayoutY((double) newVal / 2);
         });
 
         topWidth.addListener((prop, oldVal, newVal) ->
         {
+            if (contentArea.getWidth() == 0.0)
+            {
+                System.out.println("Bind test");
+                Pane p = (Pane) contentArea.getChildren().get(0);
+                p.setPrefWidth(432.0);
+                p.setMinWidth(432.0);
+                p.setMaxWidth(432.0);
+                System.out.println(p.getPrefWidth() + " " + p.getWidth() + " " + contentArea.getWidth());
+            }
             System.out.println("----------------------");
+            System.out.println("topWidth change:");
+            System.out.println(oldVal + " " + newVal);
             System.out.println(newVal + " | " + contentArea.getWidth());
             System.out.println((double) newVal - contentArea.getWidth());
             System.out.println(((double) newVal - contentArea.getWidth()) / 2);
             // contentArea.prefWidthProperty().bind(parentWidth.divide(3));
+
             contentArea.setLayoutX(((double) newVal - contentArea.getWidth()) / 2);
             settings.setLayoutX((double) newVal - settings.getPrefWidth());
             characters.setLayoutX((double) newVal / 2);
@@ -112,7 +132,10 @@ public class MainView extends Pane
 
     public void setContent(Pane content)
     {
-        System.out.println("****************************content width*********************");
+        System.out.println("****************************setting content width*********************");
+        // content.setMinWidth(432.0);
+        // content.setPrefWidth(432.0);
+        // content.setMaxWidth(432.0);
         System.out.println(content.getWidth());
         System.out.println(contentArea);
         contentWidth.bind(content.widthProperty());

@@ -35,6 +35,7 @@ public class ClipContainersFromCSV
 
     public static Map<Long, ClipContainer> loadCSV(String filename)
     {
+        System.out.println("----------Loaded Maps--------------");
         counter = 0;
         Map<Long, ClipContainer> temp = new HashMap<>();
         String[] nextLine;
@@ -61,6 +62,7 @@ public class ClipContainersFromCSV
         try
         {
             String[] nextLine;
+            System.out.println("------------Favourites--------------");
             System.out.println(pathstub + characterName + ".csv");
             CSVReader reader = new CSVReader(new FileReader(pathstub + characterName + ".csv"));
             System.out.println("Reading Favourites: " + characterName + ".csv");
