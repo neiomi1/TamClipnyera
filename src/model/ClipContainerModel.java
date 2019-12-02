@@ -14,11 +14,14 @@ public class ClipContainerModel
 
     public ClipContainerModel(String characterName)
     {
+        System.out.println("");
         this.storedMaps = new HashMap<String, ClipContainerMap>();
         loadedCSV = ClipContainersFromCSV.getCSVFiles(characterName);
         // load all relevant csv Files from user.properties
+        System.out.println("Loading Files:");
         for (String csvName : loadedCSV)
         {
+            System.out.println(csvName);
             if (!csvName.isEmpty())
             {
                 this.storedMaps.put(csvName, new ClipContainerMap(csvName));

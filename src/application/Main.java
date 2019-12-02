@@ -10,7 +10,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import main.MainPresenter;
 import main.MainView;
-import model.ClipContainerModel;
 import overview.OverviewPresenter;
 import overview.OverviewView;
 import settings.SettingsModel;
@@ -43,7 +42,8 @@ public class Main extends Application
         OverviewView overviewView = new OverviewView();
         DetailPresenter detailPresenter = new DetailPresenter();
         DetailView detailView = new DetailView();
-        ClipContainerModel model = new ClipContainerModel(settingsModel.getStartingUser());
+        // ClipContainerModel model = new
+        // ClipContainerModel(settingsModel.getStartingUser());
         SettingsView settingsView = new SettingsView();
         AddPresenter addPresenter = new AddPresenter();
         AddView addView = new AddView();
@@ -57,12 +57,12 @@ public class Main extends Application
 
         overviewPresenter.setView(overviewView);
         overviewPresenter.setMainPresenter(mainPresenter);
-        overviewPresenter.setClipContainerModel(model);
+        // overviewPresenter.setClipContainerModel(model);
         overviewView.setPresenter(overviewPresenter);
 
         detailPresenter.setView(detailView);
         detailPresenter.setMainPresenter(mainPresenter);
-        detailPresenter.setClipContainerModel(model);
+        // detailPresenter.setClipContainerModel(model);
         detailView.setPresenter(detailPresenter);
 
         settingsPresenter.setMainPresenter(mainPresenter);
@@ -71,7 +71,7 @@ public class Main extends Application
         settingsView.setSettingsPresenter(settingsPresenter);
 
         addPresenter.setMainPresenter(mainPresenter);
-        addPresenter.setClipContainerModel(model);
+        // addPresenter.setClipContainerModel(model);
         addPresenter.setAddView(addView);
         addView.setAddPresenter(addPresenter);
 

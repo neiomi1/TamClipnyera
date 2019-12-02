@@ -74,6 +74,7 @@ public class MainPresenter
         lastView = "overview";
         overviewPresenter.search();
         System.out.println(lastUser);
+        System.out.println("//////////////////////Overview//////////////////");
         mainView.setContent(overviewPresenter.getView());
     }
 
@@ -85,6 +86,7 @@ public class MainPresenter
         // overviewPresenter.ClipContainerSelected(this.container,
         // this.currentKey);
         detailPresenter.setClipContainer(container);
+        System.out.println("//////////////////////Detail//////////////////");
         mainView.setContent(detailPresenter.getView());
     }
 
@@ -95,6 +97,7 @@ public class MainPresenter
 
     public void showSettingsView()
     {
+        System.out.println("//////////////////////Settings//////////////////");
         mainView.setTopContent(settingsPresenter.getTop());
         mainView.setContent(settingsPresenter.getView());
     }
