@@ -74,15 +74,14 @@ public class MainSettingsController extends AbstractController
             try
             {
                 FXMLLoader loader = new FXMLLoader();
-                System.err.println(getClass().getResource("GraphicsSettings.fxml"));
+                System.err.println(getClass().getResource("GraphicSettings.fxml"));
                 System.err.println(getClass().getResource("/GraphicSettings.fxml"));
                 loader.setLocation(getClass().getResource("GraphicSettings.fxml"));
                 System.err.println(loader.getLocation());
                 graphicSettings = (GridPane) loader.load();
-                SettingsModel model = new SettingsModel();
 
                 GraphicSettingsController graphicSettingsController = loader.getController();
-                graphicSettingsController.setSettingsModel(model);
+                graphicSettingsController.setSettingsModel(settingsModel);
                 graphicSettingsController.setMainPresenter(mainPresenter);
                 System.err.println(graphicSettings);
             }
@@ -105,10 +104,9 @@ public class MainSettingsController extends AbstractController
                 loader.setLocation(MainSettingsController.class.getResource("Functionality.fxml"));
                 System.err.println(loader.getLocation());
                 functionalitySettings = (GridPane) loader.load();
-                SettingsModel model = new SettingsModel();
 
                 FunctionalitySettingsController functionalitySettingsController = loader.getController();
-                functionalitySettingsController.setSettingsModel(model);
+                functionalitySettingsController.setSettingsModel(settingsModel);
                 functionalitySettingsController.setMainPresenter(mainPresenter);
             }
             catch (IOException e)
@@ -129,10 +127,9 @@ public class MainSettingsController extends AbstractController
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(CharacterSettingsController.class.getResource("CharacterSettings.fxml"));
                 characterSettings = (ScrollPane) loader.load();
-                SettingsModel model = new SettingsModel();
 
                 CharacterSettingsController characterSettingsController = loader.getController();
-                characterSettingsController.setSettingsModel(model);
+                characterSettingsController.setSettingsModel(settingsModel);
                 characterSettingsController.setMainPresenter(mainPresenter);
             }
             catch (IOException e)
