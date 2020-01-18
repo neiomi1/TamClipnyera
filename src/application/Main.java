@@ -12,9 +12,6 @@ import main.MainPresenter;
 import main.MainView;
 import overview.OverviewPresenter;
 import overview.OverviewView;
-import settings.SettingsModel;
-import settings.SettingsPresenter;
-import settings.SettingsView;
 
 public class Main extends Application
 {
@@ -34,8 +31,9 @@ public class Main extends Application
 
     private MainPresenter initApplication()
     {
-        SettingsModel settingsModel = new SettingsModel();
-        SettingsPresenter settingsPresenter = new SettingsPresenter();
+        // SettingsModel settingsModel = new SettingsModel();
+        // MainSettingsController settingsPresenter = new
+        // MainSettingsController();
         MainPresenter mainPresenter = new MainPresenter();
         MainView mainView = new MainView();
         OverviewPresenter overviewPresenter = new OverviewPresenter();
@@ -44,14 +42,14 @@ public class Main extends Application
         DetailView detailView = new DetailView();
         // ClipContainerModel model = new
         // ClipContainerModel(settingsModel.getStartingUser());
-        SettingsView settingsView = new SettingsView();
+        // SettingsView settingsView = new SettingsView();
         AddPresenter addPresenter = new AddPresenter();
         AddView addView = new AddView();
 
         mainPresenter.setView(mainView);
         mainPresenter.setOverviewPresenter(overviewPresenter);
         mainPresenter.setDetailPresenter(detailPresenter);
-        mainPresenter.setSettingsPresenter(settingsPresenter);
+        mainPresenter.setMainSettingsController();
         mainPresenter.setAddPresenter(addPresenter);
         mainView.setMainPresenter(mainPresenter);
 
@@ -65,10 +63,10 @@ public class Main extends Application
         // detailPresenter.setClipContainerModel(model);
         detailView.setPresenter(detailPresenter);
 
-        settingsPresenter.setMainPresenter(mainPresenter);
-        settingsPresenter.setSettingsModel(settingsModel);
-        settingsPresenter.setSettingsView(settingsView);
-        settingsView.setSettingsPresenter(settingsPresenter);
+        // settingsPresenter.setMainPresenter(mainPresenter);
+        // settingsPresenter.setSettingsModel(settingsModel);
+        // // settingsPresenter.setSettingsView(settingsView);
+        // settingsView.setSettingsPresenter(settingsPresenter);
 
         addPresenter.setMainPresenter(mainPresenter);
         // addPresenter.setClipContainerModel(model);

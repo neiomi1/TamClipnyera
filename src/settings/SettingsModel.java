@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.text.Font;
 
 public class SettingsModel
 {
@@ -27,6 +28,20 @@ public class SettingsModel
     private ObservableList<String> allUsers;
 
     private String mode;
+
+    private int textSize;
+
+    private String resolution;
+
+    private String font;
+
+    private String theme;
+
+    private ObservableList<String> fontList;
+
+    private ObservableList<String> resolutionList;
+
+    private ObservableList<String> themeList;
 
     private ObservableList<String> allFiles;
 
@@ -74,6 +89,9 @@ public class SettingsModel
 
             result = "Last User:= " + startingUser + "\nAll Users: " + Arrays.deepToString(temp) + "\nmode: " + mode + "\nFiles: " + Arrays.deepToString(tempFiles);
             System.out.println(result + "\nProgram Ran on " + time);
+
+            fontList = FXCollections.observableList(Font.getFontNames());
+
         }
         catch (Exception e)
         {
@@ -119,6 +137,21 @@ public class SettingsModel
     public ObservableList<String> getAllFilesProperty()
     {
         return this.allFiles;
+    }
+
+    public ObservableList<String> getAllThemes()
+    {
+        return this.themeList;
+    }
+
+    public ObservableList<String> getAllFonts()
+    {
+        return this.fontList;
+    }
+
+    public ObservableList<String> getAllResolutions()
+    {
+        return this.resolutionList;
     }
 
 }

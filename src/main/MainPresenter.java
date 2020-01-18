@@ -1,22 +1,30 @@
 package main;
 
+import java.io.IOException;
+
 import add.AddPresenter;
 import detail.DetailPresenter;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import model.ClipContainer;
 import model.ClipContainerModel;
 import overview.OverviewPresenter;
-import settings.SettingsPresenter;
+import settings.MainSettingsController;
+import settings.SettingsModel;
 
 public class MainPresenter
 {
+    private VBox settingsMain;
+
     private MainView mainView;
 
     private OverviewPresenter overviewPresenter;
 
     private DetailPresenter detailPresenter;
 
-    private SettingsPresenter settingsPresenter;
+    private MainSettingsController settingsPresenter;
 
     private String currentKey;
 
@@ -32,9 +40,25 @@ public class MainPresenter
     {
     }
 
-    public void setSettingsPresenter(SettingsPresenter settingsPresenter)
+    public void setMainSettingsController()
     {
-        this.settingsPresenter = settingsPresenter;
+        try
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainSettingsController.class.getResource("settingsLayout.fxml"));
+            settingsMain = (VBox) loader.load();
+            SettingsModel model = new SettingsModel();
+
+            this.settingsPresenter = loader.getController();
+            this.settingsPresenter.setSettingsModel(model);
+            this.settingsPresenter.setMainPresenter(this);
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 
     public void setView(MainView mainView)
@@ -98,8 +122,7 @@ public class MainPresenter
     public void showSettingsView()
     {
         System.out.println("//////////////////////Settings//////////////////");
-        mainView.setTopContent(settingsPresenter.getTop());
-        mainView.setContent(settingsPresenter.getView());
+        mainView.setContent(settingsMain);
     }
 
     public void showLastView()
@@ -113,6 +136,11 @@ public class MainPresenter
         {
             showOverviewView();
         }
+    }
+
+    public void setViewContent(Region r)
+    {
+        mainView.setContent(r);
     }
 
     public String getMode()

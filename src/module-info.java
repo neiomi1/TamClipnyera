@@ -9,7 +9,7 @@ module clip
 {
     requires opencsv;
 
-    requires javafx.graphics;
+    requires transitive javafx.graphics;
 
     requires javafx.controls;
 
@@ -19,8 +19,11 @@ module clip
 
     requires javafx.base;
 
+    requires javafx.fxml;
+
     exports code;
 
     exports application;
 
+    exports settings;
 }

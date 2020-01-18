@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 public class SettingsView extends VBox
 {
-    private SettingsPresenter settingsPresenter;
+    private MainSettingsController settingsPresenter;
 
     private ObservableList<String> allCharacters;
 
@@ -80,7 +80,7 @@ public class SettingsView extends VBox
         }
     }
 
-    public void setSettingsPresenter(SettingsPresenter settingsPresenter)
+    public void setSettingsPresenter(MainSettingsController settingsPresenter)
     {
         this.settingsPresenter = settingsPresenter;
     }
