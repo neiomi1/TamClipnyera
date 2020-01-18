@@ -17,7 +17,7 @@ import javafx.scene.text.Font;
 
 public class SettingsModel
 {
-    static String pathstub = System.getProperty("user.dir") + "/src/settings/";
+    static String pathstub = System.getProperty("user.dir") + "/src/main/resources/properties/";
 
     String result = "";
 
@@ -91,6 +91,8 @@ public class SettingsModel
             System.out.println(result + "\nProgram Ran on " + time);
 
             fontList = FXCollections.observableList(Font.getFontNames());
+            resolutionList = FXCollections.observableArrayList();
+            themeList = FXCollections.observableArrayList();
 
         }
         catch (Exception e)

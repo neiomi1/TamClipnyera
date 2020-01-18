@@ -16,7 +16,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class ClipContainerToCSV
 {
-    static String pathstub = System.getProperty("user.dir") + "/csv_libraries/";
+    static String pathstub = System.getProperty("user.dir") + "/src/main/resources/csv/";
 
     public static void writeToCSV(String[] data, String filename)
     {

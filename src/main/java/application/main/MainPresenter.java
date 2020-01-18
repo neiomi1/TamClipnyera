@@ -45,8 +45,13 @@ public class MainPresenter
         try
         {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainSettingsController.class.getResource("settingsLayout.fxml"));
+            System.out.println(System.getProperty("user.dir"));
+            System.out.println(getClass().getResource("/main/java/application/main/MainPresenter.class"));
+            System.out.println(getClass().getResource("/main/resources/fxml/settingsLayout.fxml"));
+            System.out.println(getClass().getResource("/main/java/controllers/MainSettingsController.class"));
+            loader.setLocation(getClass().getResource("/main/resources/fxml/settingsLayout.fxml"));
             settingsMain = (VBox) loader.load();
+            System.out.println(settingsMain);
             SettingsModel model = new SettingsModel();
 
             this.settingsPresenter = loader.getController();

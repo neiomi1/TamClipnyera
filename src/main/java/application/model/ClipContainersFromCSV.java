@@ -14,7 +14,7 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class ClipContainersFromCSV
 {
-    static String pathstub = System.getProperty("user.dir") + "/csv_libraries/";
+    static String pathstub = System.getProperty("user.dir") + "/src/main/resources/csv/";
 
     static long counter;
 

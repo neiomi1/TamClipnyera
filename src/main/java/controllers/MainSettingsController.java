@@ -77,13 +77,14 @@ public class MainSettingsController extends AbstractController
                 FXMLLoader loader = new FXMLLoader();
                 System.err.println(getClass().getResource("GraphicSettings.fxml"));
                 System.err.println(getClass().getResource("/GraphicSettings.fxml"));
-                loader.setLocation(getClass().getResource("GraphicSettings.fxml"));
+                loader.setLocation(getClass().getResource("/main/resources/fxml/GraphicSettings.fxml"));
                 System.err.println(loader.getLocation());
                 graphicSettings = (GridPane) loader.load();
 
                 GraphicSettingsController graphicSettingsController = loader.getController();
                 graphicSettingsController.setSettingsModel(settingsModel);
                 graphicSettingsController.setMainPresenter(mainPresenter);
+                graphicSettingsController.populateLists();
                 System.err.println(graphicSettings);
             }
             catch (IOException e)
@@ -103,7 +104,7 @@ public class MainSettingsController extends AbstractController
             try
             {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(MainSettingsController.class.getResource("Functionality.fxml"));
+                loader.setLocation(getClass().getResource("/main/resources/fxml/Functionality.fxml"));
                 System.err.println(loader.getLocation());
                 functionalitySettings = (GridPane) loader.load();
 
@@ -128,7 +129,7 @@ public class MainSettingsController extends AbstractController
             try
             {
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(CharacterSettingsController.class.getResource("CharacterSettings.fxml"));
+                loader.setLocation(getClass().getResource("/main/resources/fxml/CharacterSettings.fxml"));
                 characterSettings = (ScrollPane) loader.load();
 
                 CharacterSettingsController characterSettingsController = loader.getController();
