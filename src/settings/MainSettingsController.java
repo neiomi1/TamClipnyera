@@ -94,6 +94,7 @@ public class MainSettingsController extends AbstractController
         mainPresenter.setViewContent(graphicSettings);
     }
 
+    @FXML
     public void showFunctionalitySettings()
     {
         if (functionalitySettings == null)
@@ -118,6 +119,7 @@ public class MainSettingsController extends AbstractController
         mainPresenter.setViewContent(functionalitySettings);
     }
 
+    @FXML
     public void showCharacterSettings()
     {
         if (characterSettings == null)
